@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEditor.Animations;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
     public Transform weaponRotato;
     public SpriteRenderer weapon;
+    private Animator animator;
 
     protected Dictionary<GameObject, Vector2> colliders = new Dictionary<GameObject, Vector2>();
 
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
         rgby = gameObject.Q<Rigidbody2D>();
         spriteRenderer = gameObject.Q<SpriteRenderer>();
         boxCollider2D = gameObject.Q<BoxCollider2D>();
+        animator = gameObject.Q<Animator>();
     }
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
         if (colliders.Count > 0 || Time.time < lastTimeGrounded + bonusTimeJump)
         {
             lastJump = Time.time;
+            animator.SetTrigger("jump");
             // si au moins une collision est proche de l'horizontal
             if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
             {
@@ -122,6 +126,7 @@ public class PlayerController : MonoBehaviour
         if (Vector2.Dot(Vector2.up, collision.contacts[0].normal) >= -0.1f)
         {
             colliders.Add(collision.gameObject, collision.contacts[0].normal);
+            animator.SetTrigger("land");
         }
         else
         {
