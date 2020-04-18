@@ -14,9 +14,12 @@ public class PlayerController : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    public static PlayerController one;
 
-    void Awake()
+    private void Awake()
     {
+        one = this;
+
         controls = new Controls();
         rgby = gameObject.Q<Rigidbody2D>();
 
