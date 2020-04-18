@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     public static PlayerController one;
     private BoxCollider2D boxCollider2D;
 
+    public Transform weaponRotato;
+    public SpriteRenderer weapon;
+
     protected Dictionary<GameObject, Vector2> colliders = new Dictionary<GameObject, Vector2>();
 
     private void Awake()
@@ -34,10 +37,19 @@ public class PlayerController : MonoBehaviour
         controls = new Controls();
 
         controls.FreeMovement.Jump.started += Jump_started;
+        controls.FreeMovement.Attack.started += Attack_started; ;
 
         rgby = gameObject.Q<Rigidbody2D>();
         spriteRenderer = gameObject.Q<SpriteRenderer>();
         boxCollider2D = gameObject.Q<BoxCollider2D>();
+    }
+
+    private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        weapon.enabled = true;
+        Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
+        float angle = Mathf.Atan2(dir.y, dir.x);
+        weaponRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
     }
 
     private void Jump_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -68,19 +80,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(Vector2 direction)
     {
-        float xMovement = 0;
-        float right = 1;
-        float left = -1;
-
-        if(direction.x > 0)
-        {
-            xMovement = right;
-        }
-
-        if(direction.x < 0)
-        {
-            xMovement = left;
-        }
+        float xMovement = direction.x;
 
         Vector2 directionWithoutHeight = Vector2.zero;
 
@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (xMovement != axisFacing && xMovement != 0)
+        if (Mathf.Sign(xMovement) != axisFacing && xMovement != 0)
         {
             axisFacing = -axisFacing;
             spriteRenderer.flipX = !spriteRenderer.flipX;

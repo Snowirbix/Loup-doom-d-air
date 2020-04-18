@@ -1,34 +1,34 @@
 fileFormatVersion: 2
-guid: 72f490add9938b84f8d335bdf27d0394
+guid: 3db90254ecfe7f648b1a54618f6cbfa9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7699019334066155522
-    second: spritesheetdecor_0
+      213: 18125010333655733
+    second: deathspritesheet-attaqueFX_0
   - first:
-      213: -1274444666766765974
-    second: spritesheetdecor_1
+      213: -5408136085843516817
+    second: deathspritesheet-attaqueFX_1
   - first:
-      213: 3289647973646458709
-    second: spritesheetdecor_2
+      213: 8201776290751141797
+    second: deathspritesheet-attaqueFX_2
   - first:
-      213: -653763504620946179
-    second: spritesheetdecor_3
+      213: 1560744134196313522
+    second: deathspritesheet-attaqueFX_3
   - first:
-      213: -5558018580248306887
-    second: spritesheetdecor_4
+      213: -3294185430519111865
+    second: deathspritesheet-attaqueFX_0
   - first:
-      213: 6329626504293594349
-    second: spritesheetdecor_5
+      213: -945027305707703017
+    second: deathspritesheet-attaqueFX_1
   - first:
-      213: -3005551620578178227
-    second: spritesheetdecor_6
+      213: 919451325870622253
+    second: deathspritesheet-attaqueFX_2
   - first:
-      213: -3590012680866255952
-    second: spritesheetdecor_7
+      213: -4649317640616161691
+    second: deathspritesheet-attaqueFX_3
   - first:
-      213: -5714902098811322455
-    second: spritesheetdecor_8
+      213: -7084142287935259570
+    second: deathspritesheet-attaqueFX_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheetdecor_0
+      name: deathspritesheet-attaqueFX_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 1797
-        width: 2025
-        height: 231
+        x: 0
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 200b0ed0b4968da60800000000000000
-      internalID: 7699019334066155522
+      spriteID: 74f14a5edc3b842d0800000000000000
+      internalID: -3294185430519111865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheetdecor_1
+      name: deathspritesheet-attaqueFX_1
       rect:
         serializedVersion: 2
-        x: 93
-        y: 1558
-        width: 528
-        height: 186
+        x: 80
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a60d97fe353405ee0800000000000000
-      internalID: -1274444666766765974
+      spriteID: 7157f342ca692e2f0800000000000000
+      internalID: -945027305707703017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheetdecor_2
+      name: deathspritesheet-attaqueFX_2
       rect:
         serializedVersion: 2
-        x: 958
-        y: 1559
-        width: 1081
-        height: 235
+        x: 160
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 55fd749176d27ad20800000000000000
-      internalID: 3289647973646458709
+      spriteID: d26c7c20c1c82cc00800000000000000
+      internalID: 919451325870622253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheetdecor_3
+      name: deathspritesheet-attaqueFX_3
       rect:
         serializedVersion: 2
-        x: 28
-        y: 1205
-        width: 753
-        height: 310
+        x: 240
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfc34fb6e8d5de6f0800000000000000
-      internalID: -653763504620946179
+      spriteID: 56ecd1f2d3e4a7fb0800000000000000
+      internalID: -4649317640616161691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheetdecor_4
+      name: deathspritesheet-attaqueFX_4
       rect:
         serializedVersion: 2
-        x: 950
-        y: 1199
-        width: 1094
-        height: 264
+        x: 320
+        y: 0
+        width: 80
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,92 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93b57458c83fdd2b0800000000000000
-      internalID: -5558018580248306887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheetdecor_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 990
-        width: 1898
-        height: 171
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de4315515c957d750800000000000000
-      internalID: 6329626504293594349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheetdecor_6
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 530
-        width: 1284
-        height: 427
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d4b8655a9b22a46d0800000000000000
-      internalID: -3005551620578178227
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheetdecor_7
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 128
-        width: 925
-        height: 217
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0bba1d9cc76bd2ec0800000000000000
-      internalID: -3590012680866255952
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheetdecor_8
-      rect:
-        serializedVersion: 2
-        x: 984
-        y: 114
-        width: 1052
-        height: 274
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9af773ae1d690b0b0800000000000000
-      internalID: -5714902098811322455
+      spriteID: e4cbb4d5f1210bd90800000000000000
+      internalID: -7084142287935259570
       vertices: []
       indices: 
       edges: []
