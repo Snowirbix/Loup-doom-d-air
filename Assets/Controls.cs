@@ -33,6 +33,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""33a8cd74-ca02-48ca-8cd7-f829e6d2f9b5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -156,6 +164,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5326b980-be98-4bbe-b4c7-6196aea6a612"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a503fa9e-f723-488c-b024-9cfae9bc1619"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -194,6 +224,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_FreeMovement = asset.FindActionMap("FreeMovement", throwIfNotFound: true);
         m_FreeMovement_Move = m_FreeMovement.FindAction("Move", throwIfNotFound: true);
         m_FreeMovement_Attack = m_FreeMovement.FindAction("Attack", throwIfNotFound: true);
+        m_FreeMovement_Jump = m_FreeMovement.FindAction("Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -245,12 +276,14 @@ public class @Controls : IInputActionCollection, IDisposable
     private IFreeMovementActions m_FreeMovementActionsCallbackInterface;
     private readonly InputAction m_FreeMovement_Move;
     private readonly InputAction m_FreeMovement_Attack;
+    private readonly InputAction m_FreeMovement_Jump;
     public struct FreeMovementActions
     {
         private @Controls m_Wrapper;
         public FreeMovementActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_FreeMovement_Move;
         public InputAction @Attack => m_Wrapper.m_FreeMovement_Attack;
+        public InputAction @Jump => m_Wrapper.m_FreeMovement_Jump;
         public InputActionMap Get() { return m_Wrapper.m_FreeMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -266,6 +299,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnAttack;
+                @Jump.started -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnJump;
             }
             m_Wrapper.m_FreeMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -276,6 +312,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
         }
     }
@@ -302,5 +341,6 @@ public class @Controls : IInputActionCollection, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
 }

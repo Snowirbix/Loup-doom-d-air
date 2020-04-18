@@ -9,7 +9,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rgby;
 
-    public float speed;
+    public float speed = 6;
+    public float jumpVelocity = 15f;
+
+    protected float lastJump;
+    protected float lastTimeGrounded;
+    public float bonusTimeJump = 0.1f;
 
     private float axisFacing = 1;
 
@@ -20,28 +25,41 @@ public class PlayerController : MonoBehaviour
 
     public float distanceGrounded; 
 
+    protected bool grounded = false;
+
+    protected HashSet<GameObject> colliders = new HashSet<GameObject>();
 
     private void Awake()
     {
         one = this;
 
         controls = new Controls();
+
+        controls.FreeMovement.Jump.started += Jump_started;
+
         rgby = gameObject.Q<Rigidbody2D>();
         spriteRenderer = gameObject.Q<SpriteRenderer>();
         boxCollider2D = gameObject.Q<BoxCollider2D>();
     }
 
-    void Update()
+    private void Jump_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        // 100ms bonus to jump off platform !
+        if (colliders.Count > 0 || Time.time < lastTimeGrounded + bonusTimeJump)
+        {
+            lastJump = Time.time;
+            rgby.SetVelocity(Vector2.up * jumpVelocity);
+        }
+    }
+
+    private void Update()
     {
         Vector2 movement = controls.FreeMovement.Move.ReadValue<Vector2>();
-        if(movement.y > 0 && isGrounded())
-        {
-            MoveUp(movement);
-        }
-            Move(movement);
 
+        Move(movement);
     }
-    void Move(Vector2 direction)
+
+    public void Move(Vector2 direction)
     {
         float xMovement = 0;
         float right = 1;
@@ -60,7 +78,7 @@ public class PlayerController : MonoBehaviour
         Vector2 directionWithoutHeight = Vector2.zero;
 
         float mouvementSpeed = xMovement * speed;
-        if (isGrounded())
+        if (grounded)
         {
            directionWithoutHeight = new Vector2(mouvementSpeed, rgby.velocity.y);
            rgby.SetVelocity(directionWithoutHeight);
@@ -70,7 +88,8 @@ public class PlayerController : MonoBehaviour
             float midAirControl = 5f;
             directionWithoutHeight = new Vector2(mouvementSpeed * Time.deltaTime * midAirControl, 0);
             rgby.velocity +=(directionWithoutHeight);
-            if(mouvementSpeed > 0)
+
+            if (mouvementSpeed > 0)
             {
                 rgby.velocity = new Vector2(Mathf.Clamp(rgby.velocity.x, -mouvementSpeed, mouvementSpeed), rgby.velocity.y);
             }
@@ -90,28 +109,27 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void MoveUp(Vector2 direction)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        float jumpVelocity = 30f;
-        rgby.SetVelocity(Vector2.up * jumpVelocity);
+        colliders.Add(collision.gameObject);
     }
-    void Start()
+    
+    public void OnCollisionExit2D(Collision2D collision)
     {
-        
+        colliders.Remove(collision.gameObject);
+
+        if (colliders.Count == 0)
+        {
+            lastTimeGrounded = Time.time;
+        }
     }
 
-    bool isGrounded()
-    {
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down ,distanceGrounded, plateformsLayerMask);
-        return raycastHit2D.collider != null;
-    }
-
-    void OnEnable()
+    private void OnEnable()
     {
         controls.FreeMovement.Enable();
     }
 
-    void OnDisable()
+    private void OnDisable()
     {
         controls.FreeMovement.Disable();
     }
