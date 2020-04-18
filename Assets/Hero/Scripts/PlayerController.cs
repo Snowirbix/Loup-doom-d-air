@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask plateformsLayerMask;
+    [SerializeField] private LayerMask wallsLayerMask;
     private Controls controls;
 
     private Rigidbody2D rgby;
@@ -23,11 +25,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController one;
     private BoxCollider2D boxCollider2D;
 
-    public float distanceGrounded; 
-
-    protected bool grounded = false;
-
-    protected HashSet<GameObject> colliders = new HashSet<GameObject>();
+    protected Dictionary<GameObject, Vector2> colliders = new Dictionary<GameObject, Vector2>();
 
     private void Awake()
     {
@@ -48,7 +46,16 @@ public class PlayerController : MonoBehaviour
         if (colliders.Count > 0 || Time.time < lastTimeGrounded + bonusTimeJump)
         {
             lastJump = Time.time;
-            rgby.SetVelocity(Vector2.up * jumpVelocity);
+            // si au moins une collision est proche de l'horizontal
+            if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
+            {
+                rgby.SetVelocity(Vector2.up * jumpVelocity);
+            }
+            else
+            {
+                Vector2 dir = (Vector2.up + colliders.FirstOrDefault().Value).normalized;
+                rgby.SetVelocity(dir * jumpVelocity);
+            }
         }
     }
 
@@ -78,10 +85,11 @@ public class PlayerController : MonoBehaviour
         Vector2 directionWithoutHeight = Vector2.zero;
 
         float mouvementSpeed = xMovement * speed;
-        if (grounded)
+        // si au moins une collision est proche de l'horizontal
+        if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
         {
-           directionWithoutHeight = new Vector2(mouvementSpeed, rgby.velocity.y);
-           rgby.SetVelocity(directionWithoutHeight);
+            directionWithoutHeight = new Vector2(mouvementSpeed, rgby.velocity.y);
+            rgby.SetVelocity(directionWithoutHeight);
         }
         else
         {
@@ -111,16 +119,34 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        colliders.Add(collision.gameObject);
+        if (Vector2.Dot(Vector2.up, collision.contacts[0].normal) >= -0.1f)
+        {
+            colliders.Add(collision.gameObject, collision.contacts[0].normal);
+        }
+        else
+        {
+            Debug.Log("Collision upward ignored");
+        }
     }
-    
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (colliders.ContainsKey(collision.gameObject))
+        {
+            colliders[collision.gameObject] = collision.contacts[0].normal;
+        }
+    }
+
     public void OnCollisionExit2D(Collision2D collision)
     {
-        colliders.Remove(collision.gameObject);
-
-        if (colliders.Count == 0)
+        if (colliders.ContainsKey(collision.gameObject))
         {
-            lastTimeGrounded = Time.time;
+            colliders.Remove(collision.gameObject);
+
+            if (colliders.Count == 0)
+            {
+                lastTimeGrounded = Time.time;
+            }
         }
     }
 

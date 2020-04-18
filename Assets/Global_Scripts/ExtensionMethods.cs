@@ -88,4 +88,9 @@ public static class ExtensionMethods
         rb.isKinematic = kinematic;
         return rb;
     }
+
+    public static bool Contains(this LayerMask layerMask, int layer)
+    {
+        return (1 << layer & layerMask) != 0;
+    }
 }
