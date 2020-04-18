@@ -1,7 +1,34 @@
 fileFormatVersion: 2
 guid: 72f490add9938b84f8d335bdf27d0394
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7699019334066155522
+    second: spritesheetdecor_0
+  - first:
+      213: -1274444666766765974
+    second: spritesheetdecor_1
+  - first:
+      213: 3289647973646458709
+    second: spritesheetdecor_2
+  - first:
+      213: -653763504620946179
+    second: spritesheetdecor_3
+  - first:
+      213: -5558018580248306887
+    second: spritesheetdecor_4
+  - first:
+      213: 6329626504293594349
+    second: spritesheetdecor_5
+  - first:
+      213: -3005551620578178227
+    second: spritesheetdecor_6
+  - first:
+      213: -3590012680866255952
+    second: spritesheetdecor_7
+  - first:
+      213: -5714902098811322455
+    second: spritesheetdecor_8
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +98,222 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: spritesheetdecor_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1797
+        width: 2025
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 200b0ed0b4968da60800000000000000
+      internalID: 7699019334066155522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_1
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1558
+        width: 528
+        height: 186
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60d97fe353405ee0800000000000000
+      internalID: -1274444666766765974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_2
+      rect:
+        serializedVersion: 2
+        x: 958
+        y: 1559
+        width: 1081
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55fd749176d27ad20800000000000000
+      internalID: 3289647973646458709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1205
+        width: 753
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc34fb6e8d5de6f0800000000000000
+      internalID: -653763504620946179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_4
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 1199
+        width: 1094
+        height: 264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b57458c83fdd2b0800000000000000
+      internalID: -5558018580248306887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_5
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 990
+        width: 1898
+        height: 171
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4315515c957d750800000000000000
+      internalID: 6329626504293594349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_6
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 530
+        width: 1284
+        height: 427
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b8655a9b22a46d0800000000000000
+      internalID: -3005551620578178227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 128
+        width: 925
+        height: 217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bba1d9cc76bd2ec0800000000000000
+      internalID: -3590012680866255952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheetdecor_8
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 114
+        width: 1052
+        height: 274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af773ae1d690b0b0800000000000000
+      internalID: -5714902098811322455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
