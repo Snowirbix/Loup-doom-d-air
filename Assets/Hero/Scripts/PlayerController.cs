@@ -27,10 +27,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 directionWithoutHeight = new Vector2(direction.x, 0);
         rgby.SetVelocity(directionWithoutHeight * speed);
-
-        if(direction.x != axisFacing && direction.x != 0)
+        if( NotFacingTheSameAxis(direction.x) && direction.x != 0)
         {
-            axisFacing = direction.x;
+            axisFacing = -axisFacing;
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
 
@@ -55,5 +54,23 @@ public class PlayerController : MonoBehaviour
         controls.FreeMovement.Disable();
     }
 
+    bool NotFacingTheSameAxis(float direction)
+    {
+        float left = -1;
+        float right = 1;
+        float facingSide = axisFacing;
+        float newFacingSide = 0;
+        if(direction > 0)
+        {
+            newFacingSide = right;
+        }
+
+        if(direction < 0)
+        {
+            newFacingSide = left;
+        }
+
+        return facingSide != newFacingSide;
+    }
 
 }
