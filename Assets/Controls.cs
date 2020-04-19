@@ -49,6 +49,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""3037ce8e-ca9a-4353-a40c-8903154d7cfc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -249,6 +257,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48c4c714-fe49-4245-a39d-6016814325e4"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fad002ef-72db-4ecc-92f4-9f5887e6c0d1"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -289,6 +319,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_FreeMovement_Attack = m_FreeMovement.FindAction("Attack", throwIfNotFound: true);
         m_FreeMovement_Jump = m_FreeMovement.FindAction("Jump", throwIfNotFound: true);
         m_FreeMovement_Dash = m_FreeMovement.FindAction("Dash", throwIfNotFound: true);
+        m_FreeMovement_Continue = m_FreeMovement.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -342,6 +373,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_FreeMovement_Attack;
     private readonly InputAction m_FreeMovement_Jump;
     private readonly InputAction m_FreeMovement_Dash;
+    private readonly InputAction m_FreeMovement_Continue;
     public struct FreeMovementActions
     {
         private @Controls m_Wrapper;
@@ -350,6 +382,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_FreeMovement_Attack;
         public InputAction @Jump => m_Wrapper.m_FreeMovement_Jump;
         public InputAction @Dash => m_Wrapper.m_FreeMovement_Dash;
+        public InputAction @Continue => m_Wrapper.m_FreeMovement_Continue;
         public InputActionMap Get() { return m_Wrapper.m_FreeMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -371,6 +404,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnDash;
+                @Continue.started -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnContinue;
             }
             m_Wrapper.m_FreeMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -387,6 +423,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
             }
         }
     }
@@ -415,5 +454,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnContinue(InputAction.CallbackContext context);
     }
 }

@@ -6,9 +6,11 @@ using TMPro;
 public class Dialog : MonoBehaviour
 {
     public TextMeshProUGUI textDisplay;
-    public string[] sentences;
-    private int index;
+    public List<string> listSentences;
+    private int index = 0;
     public float typeSpeed = 0.2f;
+    public GameObject continueButton;
+    public GameObject canvas;
 
     public static Dialog instance;
     void Awake()
@@ -18,25 +20,49 @@ public class Dialog : MonoBehaviour
 
     public IEnumerator Type()
     {
-        foreach(char letter in sentences[index].ToCharArray())
+        foreach(char letter in listSentences[index].ToCharArray())
         {
             textDisplay.text += letter;
             yield return new WaitForSeconds(typeSpeed);           
         }
     }
 
-    void Start()
-    {
-        StartCoroutine(Type());
-    }
-
     public void NextSentence()
     {
-        if(index < sentences.Length - 1)
-        {
-            index++;
+        continueButton.SetActive(false);
+        if (index <= listSentences.Count - 1)
+        {           
             textDisplay.text = "";
             StartCoroutine(Type());
+            index++;
+        }
+        else
+        {
+            textDisplay.text = "";
         }
     }
+    void Update()
+    {
+        if(listSentences.Count > 0)
+        {
+            if (textDisplay.text == listSentences[index - 1])
+            {
+                continueButton.SetActive(true);
+            }
+        }
+
+        if(textDisplay.text == "")
+        {
+            if(canvas.activeSelf)
+            {
+                canvas.SetActive(false);
+            }
+        }
+        else
+        {
+            canvas.SetActive(true);
+        }
+
+    }
+
 }
