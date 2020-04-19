@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour
         if(rgby.velocity.y < velocityToLand && !falling) 
         {
             falling = true;
+            animator.SetTrigger("fly");
         }
     }
 
@@ -172,7 +173,7 @@ public class PlayerController : MonoBehaviour
         {
             if (colliders.Count == 0 && falling)
             {
-                animator.SetTrigger("land");                
+                animator.SetTrigger("land");     
             }
             colliders.Add(collision.gameObject, collision.contacts[0].normal);
             falling = false;
