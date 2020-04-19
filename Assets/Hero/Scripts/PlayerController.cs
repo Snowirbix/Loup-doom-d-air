@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private float axisFacing = 1;
 
+    private Vector2 dashDir;
+
     private SpriteRenderer spriteRenderer;
 
     public static PlayerController one;
@@ -60,6 +62,15 @@ public class PlayerController : MonoBehaviour
     {
         if(Time.time > lastDash + delayBetweenDash)
         {
+            dashDir = controls.FreeMovement.Move.ReadValue<Vector2>();
+            if (dashDir.Equals(Vector2.zero))
+            {
+                dashDir = new Vector2(axisFacing, 0);
+            }
+            else
+            {
+                dashDir = new Vector2(dashDir.x, 0);
+            }
 
             animator.SetTrigger("dash");
             lastDash = Time.time;
@@ -69,12 +80,7 @@ public class PlayerController : MonoBehaviour
 
     private void LetsDash()
     {
-        Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
-        if (dir.Equals(Vector2.zero))
-        {
-            dir = new Vector2(axisFacing, 0);
-        }
-        rgby.SetVelocity(dir * dashVelocity);
+        rgby.SetVelocity(dashDir * dashVelocity);
     }
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
