@@ -125,7 +125,13 @@ MonoBehaviour:
     m_Bits: 0
   speed: 6
   jumpVelocity: 15
+  dashVelocity: 15
   bonusTimeJump: 0.1
+  timeToDash: 0.5
+  delayBetweenDash: 0.6
+  timeBeforeDash: 0.3
+  bladoRotato: {fileID: 0}
+  blade: {fileID: 0}
 --- !u!50 &793494655350671834
 Rigidbody2D:
   serializedVersion: 4

@@ -41,6 +41,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""08746ba1-b65b-4e24-9b3a-c834b9593d60"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -219,6 +227,17 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0168f578-df73-42cb-982e-5eb9af1477e4"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""PC"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -258,6 +277,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_FreeMovement_Move = m_FreeMovement.FindAction("Move", throwIfNotFound: true);
         m_FreeMovement_Attack = m_FreeMovement.FindAction("Attack", throwIfNotFound: true);
         m_FreeMovement_Jump = m_FreeMovement.FindAction("Jump", throwIfNotFound: true);
+        m_FreeMovement_Dash = m_FreeMovement.FindAction("Dash", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -310,6 +330,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_FreeMovement_Move;
     private readonly InputAction m_FreeMovement_Attack;
     private readonly InputAction m_FreeMovement_Jump;
+    private readonly InputAction m_FreeMovement_Dash;
     public struct FreeMovementActions
     {
         private @Controls m_Wrapper;
@@ -317,6 +338,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_FreeMovement_Move;
         public InputAction @Attack => m_Wrapper.m_FreeMovement_Attack;
         public InputAction @Jump => m_Wrapper.m_FreeMovement_Jump;
+        public InputAction @Dash => m_Wrapper.m_FreeMovement_Dash;
         public InputActionMap Get() { return m_Wrapper.m_FreeMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -335,6 +357,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnJump;
+                @Dash.started -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnDash;
+                @Dash.performed -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnDash;
+                @Dash.canceled -= m_Wrapper.m_FreeMovementActionsCallbackInterface.OnDash;
             }
             m_Wrapper.m_FreeMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -348,6 +373,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Dash.started += instance.OnDash;
+                @Dash.performed += instance.OnDash;
+                @Dash.canceled += instance.OnDash;
             }
         }
     }
@@ -375,5 +403,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

@@ -14,10 +14,18 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 6;
     public float jumpVelocity = 15f;
+    public float dashVelocity = 15f;
+    public float velocityToLand = -5f;
+    protected bool falling;
 
     protected float lastJump;
     protected float lastTimeGrounded;
     public float bonusTimeJump = 0.1f;
+
+    protected float lastDash;
+    public float timeToDash = 0.5f;
+    public float delayBetweenDash = 1f;
+    public float timeBeforeDash = 0.1f;
 
     private float axisFacing = 1;
 
@@ -40,11 +48,33 @@ public class PlayerController : MonoBehaviour
 
         controls.FreeMovement.Jump.started += Jump_started;
         controls.FreeMovement.Attack.started += Attack_started;
+        controls.FreeMovement.Dash.started += Dash_started;
 
         rgby = gameObject.Q<Rigidbody2D>();
         spriteRenderer = gameObject.Q<SpriteRenderer>();
         boxCollider2D = gameObject.Q<BoxCollider2D>();
         animator = gameObject.Q<Animator>();
+    }
+
+    private void Dash_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if(Time.time > lastDash + delayBetweenDash)
+        {
+
+            animator.SetTrigger("dash");
+            lastDash = Time.time;
+        }
+
+    }
+
+    private void LetsDash()
+    {
+        Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
+        if (dir.Equals(Vector2.zero))
+        {
+            dir = new Vector2(axisFacing, 0);
+        }
+        rgby.SetVelocity(dir * dashVelocity);
     }
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -82,8 +112,19 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector2 movement = controls.FreeMovement.Move.ReadValue<Vector2>();
+        if(lastDash + timeToDash < Time.time || Time.time < 1f)
+        {
+            Move(movement);
+        }
+        else if(lastDash + timeBeforeDash < Time.time)
+        {
+            LetsDash();
+        }
 
-        Move(movement);
+        if(rgby.velocity.y < velocityToLand && !falling) 
+        {
+            falling = true;
+        }
     }
 
     public void Move(Vector2 direction)
@@ -129,11 +170,12 @@ public class PlayerController : MonoBehaviour
     {
         if (Vector2.Dot(Vector2.up, collision.contacts[0].normal) >= -0.1f)
         {
-            if (colliders.Count == 0)
+            if (colliders.Count == 0 && falling)
             {
-                animator.SetTrigger("land");
+                animator.SetTrigger("land");                
             }
             colliders.Add(collision.gameObject, collision.contacts[0].normal);
+            falling = false;
         }
         else
         {
