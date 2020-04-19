@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private Controls controls;
 
     private Rigidbody2D rgby;
+    protected AudioSource audioSource;
 
     public float speed = 6;
     public float jumpVelocity = 15f;
@@ -55,6 +56,13 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = gameObject.Q<SpriteRenderer>();
         boxCollider2D = gameObject.Q<BoxCollider2D>();
         animator = gameObject.Q<Animator>();
+        audioSource = gameObject.Q<AudioSource>();
+    }
+
+    private void Start()
+    {
+        audioSource.Play();
+        audioSource.Pause();
     }
 
     private void Dash_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -79,10 +87,12 @@ public class PlayerController : MonoBehaviour
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
+
         if (dir.Equals(Vector2.zero))
         {
             dir = new Vector2(axisFacing, 0);
         }
+
         float angle = Mathf.Atan2(dir.y, dir.x);
         bladoRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
         blade.Attack();
@@ -125,6 +135,10 @@ public class PlayerController : MonoBehaviour
         }
         else if (Time.time > lastDash)
         {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Pause();
+            }
             rgby.velocity = dashDir * dashVelocity;
         }
 
@@ -143,10 +157,22 @@ public class PlayerController : MonoBehaviour
         // si au moins une collision est proche de l'horizontal
         if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
         {
+            if (xMovement != 0 && !audioSource.isPlaying)
+            {
+                audioSource.UnPause();
+            }
+            if (xMovement == 0 && audioSource.isPlaying)
+            {
+                audioSource.Pause();
+            }
             rgby.velocity = new Vector2(mouvementSpeed, rgby.velocity.y);
         }
         else
         {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Pause();
+            }
             float midAirControl = 5f;
             rgby.velocity += new Vector2(mouvementSpeed * midAirControl * Time.deltaTime, 0);
             // clamp velocity
