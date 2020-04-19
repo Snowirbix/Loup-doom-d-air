@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
 
     protected float lastDash;
     public float timeToDash = 0.5f;
+    public float timeToControlDash = 0.2f;
     public float delayBetweenDash = 1f;
-    public float timeBeforeDash = 0.1f;
 
     private float axisFacing = 1;
 
@@ -78,11 +78,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void LetsDash()
-    {
-        rgby.SetVelocity(dashDir * dashVelocity);
-    }
-
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
@@ -105,12 +100,12 @@ public class PlayerController : MonoBehaviour
             // si au moins une collision est proche de l'horizontal
             if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
             {
-                rgby.SetVelocity(Vector2.up * jumpVelocity);
+                rgby.velocity = Vector2.up * jumpVelocity;
             }
             else
             {
                 Vector2 dir = (Vector2.up + colliders.FirstOrDefault().Value).normalized;
-                rgby.SetVelocity(dir * jumpVelocity);
+                rgby.velocity = dir * jumpVelocity;
             }
         }
     }
@@ -118,13 +113,21 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector2 movement = controls.FreeMovement.Move.ReadValue<Vector2>();
-        if(lastDash + timeToDash < Time.time || Time.time < 1f)
+        if(Time.time > lastDash + timeToDash || Time.time < 1f)
         {
             Move(movement);
         }
-        else if(lastDash + timeBeforeDash < Time.time)
+        else if (Time.time > lastDash + timeToControlDash)
         {
-            LetsDash();
+            // give some control for the second part
+            float mouvementSpeed = movement.x * speed;
+            float midAirControl = 0.15f;
+
+            rgby.velocity = new Vector2(dashDir.x * dashVelocity + mouvementSpeed * midAirControl, rgby.velocity.y);
+        }
+        else if (Time.time > lastDash)
+        {
+            rgby.velocity = dashDir * dashVelocity;
         }
 
         if(rgby.velocity.y < velocityToLand && !falling) 
@@ -137,31 +140,19 @@ public class PlayerController : MonoBehaviour
     public void Move(Vector2 direction)
     {
         float xMovement = direction.x;
-
-        Vector2 directionWithoutHeight = Vector2.zero;
-
         float mouvementSpeed = xMovement * speed;
+
         // si au moins une collision est proche de l'horizontal
         if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
         {
-            directionWithoutHeight = new Vector2(mouvementSpeed, rgby.velocity.y);
-            rgby.SetVelocity(directionWithoutHeight);
+            rgby.velocity = new Vector2(mouvementSpeed, rgby.velocity.y);
         }
         else
         {
             float midAirControl = 5f;
-            directionWithoutHeight = new Vector2(mouvementSpeed * Time.deltaTime * midAirControl, 0);
-            rgby.velocity +=(directionWithoutHeight);
-
-            if (mouvementSpeed > 0)
-            {
-                rgby.velocity = new Vector2(Mathf.Clamp(rgby.velocity.x, -mouvementSpeed, mouvementSpeed), rgby.velocity.y);
-            }
-            else
-            {
-                rgby.velocity = new Vector2(Mathf.Clamp(rgby.velocity.x, mouvementSpeed, -mouvementSpeed), rgby.velocity.y);
-            }
-            
+            rgby.velocity += new Vector2(mouvementSpeed * midAirControl * Time.deltaTime, 0);
+            // clamp velocity
+            rgby.velocity = new Vector2(Mathf.Clamp(rgby.velocity.x, -speed, speed), rgby.velocity.y);            
         }
 
 
@@ -170,16 +161,24 @@ public class PlayerController : MonoBehaviour
             axisFacing = -axisFacing;
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
-
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (Vector2.Dot(Vector2.up, collision.contacts[0].normal) >= -0.1f)
         {
-            if (colliders.Count == 0 && falling)
+            if (colliders.Count == 0)
             {
-                animator.SetTrigger("land");     
+                if (falling)
+                {
+                    animator.SetTrigger("land");    
+                }
+                else
+                {
+                    animator.SetTrigger("quickland");
+                }
+                animator.ResetTrigger("fly");
+                animator.ResetTrigger("jump");
             }
             colliders.Add(collision.gameObject, collision.contacts[0].normal);
             falling = false;
