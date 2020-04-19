@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         if(Time.time > lastDash + delayBetweenDash)
         {
             dashDir = controls.FreeMovement.Move.ReadValue<Vector2>();
-            if (dashDir.Equals(Vector2.zero))
+            if (dashDir.x == 0)
             {
                 dashDir = new Vector2(axisFacing, 0);
             }
@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("dash");
             lastDash = Time.time;
         }
-
     }
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
