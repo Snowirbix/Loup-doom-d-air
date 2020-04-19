@@ -29,6 +29,12 @@ TextureImporter:
   - first:
       213: -7084142287935259570
     second: deathspritesheet-attaqueFX_4
+  - first:
+      213: -2854137103693497894
+    second: deathspritesheet-attaqueFX_4
+  - first:
+      213: -7965754795937661195
+    second: deathspritesheet-attaqueFX_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -224,8 +230,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4cbb4d5f1210bd90800000000000000
-      internalID: -7084142287935259570
+      spriteID: ad936121d611468d0800000000000000
+      internalID: -2854137103693497894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: deathspritesheet-attaqueFX_5
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 80
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe754ca734f37190800000000000000
+      internalID: -7965754795937661195
       vertices: []
       indices: 
       edges: []

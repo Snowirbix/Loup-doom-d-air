@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     public static PlayerController one;
     private BoxCollider2D boxCollider2D;
 
-    public Transform weaponRotato;
-    public SpriteRenderer weapon;
+    public Transform bladoRotato;
+    public Blade blade;
     private Animator animator;
 
     protected Dictionary<GameObject, Vector2> colliders = new Dictionary<GameObject, Vector2>();
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
         controls = new Controls();
 
         controls.FreeMovement.Jump.started += Jump_started;
-        controls.FreeMovement.Attack.started += Attack_started; ;
+        controls.FreeMovement.Attack.started += Attack_started;
 
         rgby = gameObject.Q<Rigidbody2D>();
         spriteRenderer = gameObject.Q<SpriteRenderer>();
@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        weapon.enabled = true;
         Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
         float angle = Mathf.Atan2(dir.y, dir.x);
-        weaponRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
+        bladoRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
+        blade.Attack();
     }
 
     private void Jump_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -125,8 +125,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Vector2.Dot(Vector2.up, collision.contacts[0].normal) >= -0.1f)
         {
+            if (colliders.Count == 0)
+            {
+                animator.SetTrigger("land");
+            }
             colliders.Add(collision.gameObject, collision.contacts[0].normal);
-            animator.SetTrigger("land");
         }
         else
         {
