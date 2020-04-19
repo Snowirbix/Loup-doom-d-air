@@ -586,6 +586,7 @@ GameObject:
   - component: {fileID: 156040874}
   - component: {fileID: 156040878}
   - component: {fileID: 156040879}
+  - component: {fileID: 156040880}
   m_Layer: 10
   m_Name: Bat
   m_TagString: Untagged
@@ -648,7 +649,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 4ddfd261949eaa54c87cff99f463f9ed, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -713,7 +714,7 @@ MonoBehaviour:
   - {fileID: 1040330127}
   range: 5
   reachRange: 0.2
-  moveSpeed: 0.3
+  moveSpeed: 0.1
 --- !u!95 &156040879
 Animator:
   serializedVersion: 3
@@ -733,6 +734,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &156040880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156040873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0557e854c9519459fb118ea081f7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoint: 2
+  hitDuration: 0.2
 --- !u!1 &229485839
 GameObject:
   m_ObjectHideFlags: 0

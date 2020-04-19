@@ -24,6 +24,7 @@ public class Blade : MonoBehaviour
         {
             Vector2 dir = (enemy.Position() - player.Position()).normalized;
             enemy.Q<Rigidbody2D>().AddForce(dir * knockBackForce, ForceMode2D.Impulse);
+            enemy.Q<Health>().Hit(1);
         }
     }
 
