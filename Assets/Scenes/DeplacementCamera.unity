@@ -182,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 87667639}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6e03e150c6cca404a9dee7ce3730fac9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 91a502455b6b9c94f9d0b2ecb400de64, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -416,7 +416,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 18125010333655733, guid: 3db90254ecfe7f648b1a54618f6cbfa9, type: 3}
+  m_Sprite: {fileID: -7965754795937661195, guid: 3db90254ecfe7f648b1a54618f6cbfa9,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -458,6 +459,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4413ed65f078b34b911e8809506b2a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &130548010
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +584,7 @@ GameObject:
   - component: {fileID: 156040874}
   - component: {fileID: 156040878}
   - component: {fileID: 156040879}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1436,8 +1440,8 @@ Camera:
   m_GameObject: {fileID: 1968324642}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

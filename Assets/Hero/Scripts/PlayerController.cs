@@ -50,6 +50,10 @@ public class PlayerController : MonoBehaviour
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
+        if (dir.Equals(Vector2.zero))
+        {
+            dir = new Vector2(axisFacing, 0);
+        }
         float angle = Mathf.Atan2(dir.y, dir.x);
         bladoRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
         blade.Attack();
