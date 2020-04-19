@@ -277,7 +277,12 @@ MonoBehaviour:
     m_Bits: 512
   speed: 6
   jumpVelocity: 15
+  dashVelocity: 15
+  velocityToLand: -5
   bonusTimeJump: 0.1
+  timeToDash: 0.5
+  delayBetweenDash: 1
+  timeBeforeDash: 0.1
   bladoRotato: {fileID: 1706553561}
   blade: {fileID: 95415642}
 --- !u!50 &87667644
@@ -463,6 +468,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   knockBackForce: 20
+  selfKnockBackForce: 15
   player: {fileID: 87667639}
 --- !u!1 &130548010
 GameObject:
@@ -748,6 +754,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoint: 2
   hitDuration: 0.2
+  pendingDeath: 0
+  lastDeath: 0
+  deathDuration: 0.2
 --- !u!1 &229485839
 GameObject:
   m_ObjectHideFlags: 0
