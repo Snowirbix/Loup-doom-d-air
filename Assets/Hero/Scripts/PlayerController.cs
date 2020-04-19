@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     public float timeToControlDash = 0.2f;
     public float delayBetweenDash = 1f;
 
-    private float axisFacing = 1;
+    public float axisFacing = 1;
 
     private Vector2 dashDir;
 
