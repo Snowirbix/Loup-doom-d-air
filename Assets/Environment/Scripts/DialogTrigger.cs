@@ -6,9 +6,9 @@ public class DialogTrigger : MonoBehaviour
 {
     public List<string> listSentences;
     private bool triggerOnce = false;
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if(!triggerOnce)
+        if(!triggerOnce && collider.gameObject.tag == "Player")
         {
             Dialog.instance.listSentences.AddRange(listSentences);
             Dialog.instance.NextSentence();
