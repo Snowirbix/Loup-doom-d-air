@@ -49,8 +49,7 @@ public class Bat : MonoBehaviour
     {
         Vector2 diff = player.position.XY() - transform.position.XY();
         
-        // todo : use forces
-        rgby.SetVelocity(diff.normalized * moveSpeed);
+        rgby.AddForce(diff.normalized * moveSpeed, ForceMode2D.Impulse);
     }
 
     protected void Patrol ()
@@ -69,7 +68,6 @@ public class Bat : MonoBehaviour
             diff = targetPoints[currentTarget].position.XY() - transform.position.XY();
         }
         
-        // todo : use forces
-        rgby.SetVelocity(diff.normalized * moveSpeed);
+        rgby.AddForce(diff.normalized * moveSpeed, ForceMode2D.Impulse);
     }
 }

@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 87667643}
   - component: {fileID: 87667644}
   - component: {fileID: 87667645}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,9 +374,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.1}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!212 &95415640
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -7965754795937661195, guid: 3db90254ecfe7f648b1a54618f6cbfa9,
+  m_Sprite: {fileID: -5408136085843516817, guid: 3db90254ecfe7f648b1a54618f6cbfa9,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -462,6 +462,8 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  knockBackForce: 20
+  player: {fileID: 87667639}
 --- !u!1 &130548010
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +606,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -625,9 +627,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03, y: -0.05}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.3
 --- !u!212 &156040876
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -700,7 +702,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156040873}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d1550d21b5085d4cbe1e724414b10e0, type: 3}
   m_Name: 
@@ -711,7 +713,7 @@ MonoBehaviour:
   - {fileID: 1040330127}
   range: 5
   reachRange: 0.2
-  moveSpeed: 2
+  moveSpeed: 0.3
 --- !u!95 &156040879
 Animator:
   serializedVersion: 3
@@ -1273,7 +1275,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706553561}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: BladoRotato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
