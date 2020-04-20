@@ -36,9 +36,9 @@ public class Claw : MonoBehaviour
         if (playerIn)
         {
             Vector2 diff = player.gameObject.Position() - transform.position.XY();
-            Debug.Log("HIT");
             player.hp--;
             player.gameObject.Q<Rigidbody2D>().SetVelocity(diff.normalized * knockBackForce);
+            player.Hit();
         }
     }
 
