@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public PlayAudio dashAudio;
     public PlayAudio landAudio;
     public PlayAudio jumpAudio;
+    public PlayAudio painAudio;
 
     public float speed = 6;
     public float jumpVelocity = 15f;
@@ -273,4 +274,8 @@ public class PlayerController : MonoBehaviour
         controls.FreeMovement.Disable();
     }
     
+    public void Hit ()
+    {
+        painAudio.Play();
+    }
 }

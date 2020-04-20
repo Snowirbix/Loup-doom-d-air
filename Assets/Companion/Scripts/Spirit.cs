@@ -12,24 +12,34 @@ public class Spirit : MonoBehaviour
 
     protected PlayerController player;
     protected Rigidbody2D rgby;
+    protected AudioSource audioSource;
 
     private SpriteRenderer sprite;
+
+    private bool combat = false;
 
     private void Start()
     {
         player = PlayerController.one;
         rgby = gameObject.Q<Rigidbody2D>();
         sprite = gameObject.Q<SpriteRenderer>();
+        audioSource = gameObject.Q<AudioSource>();
     }
 
     private void Update()
     {
         if (PlayerController.one.activeEnemies.Count > 0)
         {
+            combat = true;
             CloseCombat();
         }
         else
         {
+            if (combat)
+            {
+                audioSource.Play();
+                combat = false;
+            }
             Twirl();
         }
         Facing();
