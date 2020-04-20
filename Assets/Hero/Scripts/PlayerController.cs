@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rgby;
     protected AudioSource audioSource;
 
+    public PlayAudio dashAudio;
+    public PlayAudio landAudio;
+    public PlayAudio jumpAudio;
+
     public float speed = 6;
     public float jumpVelocity = 15f;
     public float dashVelocity = 15f;
@@ -26,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public float timeToDash = 0.5f;
     public float timeToControlDash = 0.2f;
     public float delayBetweenDash = 1f;
+
+    public float attackCooldown = 0.7f;
+    public float lastAttack;
 
     public float axisFacing = 1;
 
@@ -79,6 +86,7 @@ public class PlayerController : MonoBehaviour
                 dashDir = new Vector2(dashDir.x, 0);
             }
 
+            dashAudio.Play();
             animator.SetTrigger("dash");
             lastDash = Time.time;
         }
@@ -86,16 +94,21 @@ public class PlayerController : MonoBehaviour
 
     private void Attack_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
-
-        if (dir.Equals(Vector2.zero))
+        if (Time.time > lastAttack + attackCooldown)
         {
-            dir = new Vector2(axisFacing, 0);
-        }
+            lastAttack = Time.time;
 
-        float angle = Mathf.Atan2(dir.y, dir.x);
-        bladoRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
-        blade.Attack();
+            Vector2 dir = controls.FreeMovement.Move.ReadValue<Vector2>();
+
+            if (dir.Equals(Vector2.zero))
+            {
+                dir = new Vector2(axisFacing, 0);
+            }
+
+            float angle = Mathf.Atan2(dir.y, dir.x);
+            bladoRotato.rotation = Quaternion.AngleAxis(angle * 180 / Mathf.PI, Vector3.forward);
+            blade.Attack();
+        }
     }
 
     private void Jump_started(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -105,6 +118,8 @@ public class PlayerController : MonoBehaviour
         {
             lastJump = Time.time;
             animator.SetTrigger("jump");
+            jumpAudio.Play(Random.Range(1.2f, 1.3f));
+
             // si au moins une collision est proche de l'horizontal
             if (colliders.Any(x => Vector2.Dot(Vector2.up, x.Value) > 0.2f))
             {
@@ -193,9 +208,11 @@ public class PlayerController : MonoBehaviour
         {
             if (colliders.Count == 0)
             {
-                if (falling)
+                // if enough down speed and horizontal collision
+                if (falling && Vector2.Dot(Vector2.up, collision.contacts[0].normal) > 0.2f)
                 {
-                    animator.SetTrigger("land");    
+                    animator.SetTrigger("land");
+                    landAudio.Play(Random.Range(1.1f, 1.2f));
                 }
                 else
                 {

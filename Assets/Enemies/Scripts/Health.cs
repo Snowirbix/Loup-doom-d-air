@@ -35,7 +35,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void Hit (int damage)
+    public bool Hit (int damage)
     {
         mat.SetFloat("_Hit", 1.0f);
         lastHit = Time.time;
@@ -45,6 +45,9 @@ public class Health : MonoBehaviour
         {
             pendingDeath = true;
             lastDeath = Time.time;
+            return true;
         }
+
+        return false;
     }
 }

@@ -38,9 +38,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: backgroundLightLayer
+  - name: background
     uniqueID: 2599994617
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: front
+    uniqueID: 677569113
+    locked: 0
+  - name: middle ground
+    uniqueID: 2820426123
     locked: 0

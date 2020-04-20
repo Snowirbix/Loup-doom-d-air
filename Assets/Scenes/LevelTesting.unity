@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2752,56 +2752,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_LookaheadIgnoreY
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_LookaheadTime
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_XDamping
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_YDamping
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_ScreenX
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_BiasX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_SoftZoneWidth
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_SoftZoneHeight
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_DeadZoneHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 240135240534052974, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
-        type: 3}
-      propertyPath: m_LookaheadSmoothing
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 240135241972159273, guid: 6d5ac5007813c1f4f8e9da2b0871e509,
         type: 3}
       propertyPath: m_Name
