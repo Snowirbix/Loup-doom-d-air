@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     public float axisFacing = 1;
 
-    public int hp = 2;
+    public int hp = 3;
 
     private Vector2 dashDir;
 

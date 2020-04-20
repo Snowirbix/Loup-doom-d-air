@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0557e854c9519459fb118ea081f7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoint: 5
+  healthPoint: 2
   hitDuration: 0.2
   pendingDeath: 0
   lastDeath: 0
