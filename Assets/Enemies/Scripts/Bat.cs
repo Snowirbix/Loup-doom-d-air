@@ -39,9 +39,16 @@ public class Bat : MonoBehaviour
 
     private void Update()
     {
-        if ((player.position - transform.position).sqrMagnitude < range * range)
+        if (targetPlayer == false && (player.position - transform.position).sqrMagnitude < range * range)
         {
             targetPlayer = true;
+            PlayerController.one.activeEnemies.Add(gameObject);
+        }
+        if (targetPlayer && (player.position - transform.position).magnitude > range * 2)
+        {
+            targetPlayer = false;
+            if (PlayerController.one.activeEnemies.Contains(gameObject))
+                PlayerController.one.activeEnemies.Remove(gameObject);
         }
         if (targetPlayer)
         {
@@ -51,6 +58,12 @@ public class Bat : MonoBehaviour
         {
             Patrol();
         }
+    }
+
+    public void Death ()
+    {
+        if (PlayerController.one.activeEnemies.Contains(gameObject))
+            PlayerController.one.activeEnemies.Remove(gameObject);
     }
 
     protected void MoveAttackPlayer ()

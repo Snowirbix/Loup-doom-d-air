@@ -24,8 +24,14 @@ public class Spirit : MonoBehaviour
 
     private void Update()
     {
-        //CloseCombat();
-        Twirl();
+        if (PlayerController.one.activeEnemies.Count > 0)
+        {
+            CloseCombat();
+        }
+        else
+        {
+            Twirl();
+        }
         Facing();
     }
 

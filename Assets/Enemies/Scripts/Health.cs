@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class Health : MonoBehaviour
     public bool pendingDeath = false;
     public float lastDeath;
     public float deathDuration = 0.2f;
+
+    public UnityEvent death;
 
     private void Start()
     {
@@ -45,6 +48,7 @@ public class Health : MonoBehaviour
         {
             pendingDeath = true;
             lastDeath = Time.time;
+            death.Invoke();
             return true;
         }
 

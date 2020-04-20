@@ -47,6 +47,8 @@ public class PlayerController : MonoBehaviour
     public Blade blade;
     private Animator animator;
 
+    public HashSet<GameObject> activeEnemies = new HashSet<GameObject>();
+
     protected Dictionary<GameObject, Vector2> colliders = new Dictionary<GameObject, Vector2>();
 
     private void Awake()
