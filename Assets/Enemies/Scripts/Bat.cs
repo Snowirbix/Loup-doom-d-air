@@ -69,8 +69,15 @@ public class Bat : MonoBehaviour
     protected void MoveAttackPlayer ()
     {
         Vector2 diff = player.position.XY() - transform.position.XY();
-        
-        rgby.AddForce(diff.normalized * moveSpeed, ForceMode2D.Impulse);
+
+        if (diff.magnitude < 2)
+        {
+            rgby.AddForce(-diff.normalized * moveSpeed, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rgby.AddForce(diff.normalized * moveSpeed, ForceMode2D.Impulse);
+        }
         
         if (Time.time > lastAttack + attackCooldown)
         {
