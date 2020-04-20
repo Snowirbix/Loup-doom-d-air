@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Death : MonoBehaviour
 {
-    public GameObject lightRight;
-    public GameObject lightLeft;
+    public GameObject Spirit;
+    private Animator animatorSpirit;
     private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         animator = gameObject.Q<Animator>();
+        animatorSpirit = Spirit.Q<Animator>();
     }
 
     // Update is called once per frame
@@ -25,8 +26,10 @@ public class Death : MonoBehaviour
 
     void death()
     {
+        animatorSpirit.SetTrigger("death");
         animator.SetTrigger("death");
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+        animatorSpirit.updateMode = AnimatorUpdateMode.UnscaledTime;
         Time.timeScale = 0;
 
     }
