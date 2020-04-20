@@ -162,6 +162,8 @@ public class PlayerController : MonoBehaviour
             falling = true;
             animator.SetTrigger("fly");
         }
+
+        animator.SetFloat("Blend", Mathf.Sqrt(rgby.velocity.x * rgby.velocity.x));
     }
 
     public void Move(Vector2 direction)
