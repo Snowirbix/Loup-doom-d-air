@@ -44,9 +44,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: front
-    uniqueID: 677569113
+  - name: middle platforms
+    uniqueID: 3438103741
     locked: 0
   - name: middle ground
     uniqueID: 2820426123
+    locked: 0
+  - name: front
+    uniqueID: 677569113
     locked: 0
