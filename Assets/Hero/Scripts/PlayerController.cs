@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     public float axisFacing = 1;
 
+    public int hp = 2;
+
     private Vector2 dashDir;
 
     private SpriteRenderer spriteRenderer;
@@ -166,6 +168,12 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetFloat("Blend", Mathf.Sqrt(rgby.velocity.x * rgby.velocity.x));
+
+        if(hp == 0)
+        {
+            Death death = gameObject.Q<Death>();
+            death.death();
+        }
     }
 
     public void Move(Vector2 direction)
