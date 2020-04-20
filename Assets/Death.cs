@@ -8,6 +8,8 @@ public class Death : MonoBehaviour
     public GameObject Spirit;
     private Animator animatorSpirit;
     private Animator animator;
+
+    private bool once = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,22 +17,18 @@ public class Death : MonoBehaviour
         animatorSpirit = Spirit.Q<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void death()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(!once)
         {
-            death();
+            animatorSpirit.SetTrigger("death");
+            animator.SetTrigger("death");
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+            animatorSpirit.updateMode = AnimatorUpdateMode.UnscaledTime;
+            Time.timeScale = 0;
         }
-    }
 
-    void death()
-    {
-        animatorSpirit.SetTrigger("death");
-        animator.SetTrigger("death");
-        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-        animatorSpirit.updateMode = AnimatorUpdateMode.UnscaledTime;
-        Time.timeScale = 0;
+        once = true;
 
     }
 
