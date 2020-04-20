@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2551179338173181295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7966650757925199461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f567dee6dd9672741ba3fa7cd58824d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sentenceKeyboard: 'DEV: To move use WASD, to hit press spacebar. You can also dash
+    with left shift.'
+  sentenceGamepad: 'DEV: To move use your joystick, to jump use A and to hit use
+    X. You can also dash with RT.'
+--- !u!1001 &6371310902195852266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844096, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.data[0]
+      value: 'SPIRIT : Where... Where Am I???'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.data[1]
+      value: 'DEATH: Hi there, you''re dead... and yet your journey has just begun.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.data[2]
+      value: 'SPIRIT: What''s the meaning of that? Do you mean that I''m in...'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.data[3]
+      value: 'DEATH: You''re in hell yeah.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.data[4]
+      value: 'SPIRIT: Wow I wouldn''t think that Hell would look like that. So what
+        I have to do right now?'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844098, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: listSentences.Array.data[5]
+      value: 'DEATH: Just follow me and everything will be fine !'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3955368999273844111, guid: fbeddfddd4955914c8264b091b09e2f4,
+        type: 3}
+      propertyPath: m_Name
+      value: StartDialogTrigger Variant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fbeddfddd4955914c8264b091b09e2f4, type: 3}
+--- !u!1 &7966650757925199461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3955368999273844111, guid: fbeddfddd4955914c8264b091b09e2f4,
+    type: 3}
+  m_PrefabInstance: {fileID: 6371310902195852266}
+  m_PrefabAsset: {fileID: 0}
