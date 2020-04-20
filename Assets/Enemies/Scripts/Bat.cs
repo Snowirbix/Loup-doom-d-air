@@ -12,16 +12,24 @@ public class Bat : MonoBehaviour
     public float moveSpeed = 2f;
 
     protected Rigidbody2D rgby;
+    protected Animator animator;
     protected Collider2D collider;
     protected Transform player;
 
     protected int currentTarget = 0;
     protected bool targetPlayer = false;
 
+    public Transform clawRotato;
+    public Claw claw;
+
+    public float attackCooldown = 2.5f;
+    public float lastAttack;
+
     private void Awake()
     {
         rgby     = gameObject.Q<Rigidbody2D>();
         collider = gameObject.Q<Collider2D>();
+        animator = gameObject.Q<Animator>();
     }
 
     private void Start()
@@ -50,6 +58,17 @@ public class Bat : MonoBehaviour
         Vector2 diff = player.position.XY() - transform.position.XY();
         
         rgby.AddForce(diff.normalized * moveSpeed, ForceMode2D.Impulse);
+        
+        if (Time.time > lastAttack + attackCooldown)
+        {
+            lastAttack = Time.time;
+
+            float angle = Mathf.Atan2(diff.normalized.y, diff.normalized.x);
+            clawRotato.rotation = Quaternion.AngleAxis((angle * 180 / Mathf.PI) + 180f, Vector3.forward);
+
+            animator.SetTrigger("attack");
+            claw.Attack();
+        }
     }
 
     protected void Patrol ()
