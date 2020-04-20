@@ -14,17 +14,21 @@ public class Spirit : MonoBehaviour
     protected Rigidbody2D rgby;
     protected Collider2D collider;
 
+    private SpriteRenderer sprite;
+
     private void Start()
     {
         player = PlayerController.one;
         rgby = gameObject.Q<Rigidbody2D>();
         collider = gameObject.Q<Collider2D>();
+        sprite = gameObject.Q<SpriteRenderer>();
     }
 
     private void Update()
     {
         //CloseCombat();
         Twirl();
+        Facing();
     }
 
     protected void CloseCombat ()
@@ -84,5 +88,17 @@ public class Spirit : MonoBehaviour
         Vector2 dir = diff.normalized * Mathf.Sqrt(length);
 
         rgby.AddForce(dir * speed, ForceMode2D.Impulse);
+    }
+
+    void Facing()
+    {
+        if(transform.position.x > player.transform.position.x && !sprite.flipX)
+        {
+            sprite.flipX = !sprite.flipX;
+        }
+        else if(transform.position.x < player.transform.position.x && sprite.flipX)
+        {
+            sprite.flipX = !sprite.flipX;
+        }
     }
 }
