@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Blade : MonoBehaviour
@@ -20,7 +21,7 @@ public class Blade : MonoBehaviour
     public GameObject prefabHitPixelLine;
     public GameObject prefabHitPixelLine2;
 
-    HashSet<GameObject> colliders = new HashSet<GameObject>();
+    public HashSet<GameObject> colliders = new HashSet<GameObject>();
 
     private void Start()
     {
@@ -34,8 +35,15 @@ public class Blade : MonoBehaviour
         bool hitEnemy = false;
         bool hitGround = false;
 
-        foreach (GameObject collider in colliders)
+        GameObject[] coll = colliders.ToArray();
+        foreach (GameObject collider in coll)
         {
+            if (collider == null)
+            {
+                Debug.Log("Null collider");
+                colliders.Remove(collider);
+                continue;
+            }
             if (enemyLayerMask.Contains(collider.layer))
             {
                 hitEnemy = true;

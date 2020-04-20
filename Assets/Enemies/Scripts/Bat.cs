@@ -63,7 +63,10 @@ public class Bat : MonoBehaviour
     public void Death ()
     {
         if (PlayerController.one.activeEnemies.Contains(gameObject))
+        {
             PlayerController.one.activeEnemies.Remove(gameObject);
+            collider.enabled = false;
+        }
     }
 
     protected void MoveAttackPlayer ()
