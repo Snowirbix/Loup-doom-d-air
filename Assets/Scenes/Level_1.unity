@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -229,6 +229,16 @@ PrefabInstance:
       propertyPath: targetPoints.Array.data[2]
       value: 
       objectReference: {fileID: 1644836477}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: range
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450006, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: m_SortingLayer
@@ -1107,7 +1117,12 @@ PrefabInstance:
     - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: moveSpeed
-      value: 0.15
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: range
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450006, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
@@ -1763,6 +1778,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1543247685}
     m_Modifications:
+    - target: {fileID: 1649089271679449994, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: healthPoint
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450003, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: m_Name
@@ -1786,7 +1806,12 @@ PrefabInstance:
     - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: moveSpeed
-      value: 0.15
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: range
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450006, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
@@ -1976,6 +2001,16 @@ PrefabInstance:
       propertyPath: targetPoints.Array.data[2]
       value: 
       objectReference: {fileID: 290600003}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: range
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450006, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: m_SortingLayer
@@ -3726,6 +3761,16 @@ PrefabInstance:
       propertyPath: targetPoints.Array.data[2]
       value: 
       objectReference: {fileID: 1845581844}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: range
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450006, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: m_SortingLayer
@@ -7527,6 +7572,16 @@ PrefabInstance:
       propertyPath: targetPoints.Array.data[2]
       value: 
       objectReference: {fileID: 120875659}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649089271679450004, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
+        type: 3}
+      propertyPath: range
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1649089271679450006, guid: c7bc7b2c2bedfb749b95167bc2bc50bd,
         type: 3}
       propertyPath: m_SortingLayer
@@ -8359,12 +8414,17 @@ PrefabInstance:
     - target: {fileID: 6490285202075038882, guid: 740b1918cb488c84fb3b9d23288511d5,
         type: 3}
       propertyPath: range
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6490285202075038882, guid: 740b1918cb488c84fb3b9d23288511d5,
         type: 3}
       propertyPath: moveSpeed
-      value: 0.15
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6490285202075038882, guid: 740b1918cb488c84fb3b9d23288511d5,
+        type: 3}
+      propertyPath: attackCooldown
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6490285202075038885, guid: 740b1918cb488c84fb3b9d23288511d5,
         type: 3}
@@ -8374,12 +8434,12 @@ PrefabInstance:
     - target: {fileID: 6490285202075038908, guid: 740b1918cb488c84fb3b9d23288511d5,
         type: 3}
       propertyPath: healthPoint
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7824249621061120120, guid: 740b1918cb488c84fb3b9d23288511d5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5
+      value: -0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 740b1918cb488c84fb3b9d23288511d5, type: 3}

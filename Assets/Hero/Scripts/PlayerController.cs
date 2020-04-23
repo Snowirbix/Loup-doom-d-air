@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     public int hp = 3;
 
+    public float midAirControl = 0.2f;
+
     private Vector2 dashDir;
 
     private SpriteRenderer spriteRenderer;
@@ -149,9 +151,8 @@ public class PlayerController : MonoBehaviour
         {
             // give some control for the second part
             float mouvementSpeed = movement.x * speed;
-            float midAirControl = 0.15f;
 
-            rgby.velocity = new Vector2(dashDir.x * dashVelocity + mouvementSpeed * midAirControl, rgby.velocity.y);
+            rgby.velocity = new Vector2(dashDir.x * dashVelocity + mouvementSpeed * 0.15f, rgby.velocity.y);
         }
         else if (Time.time > lastDash)
         {
@@ -196,12 +197,12 @@ public class PlayerController : MonoBehaviour
             rgby.velocity = new Vector2(mouvementSpeed, rgby.velocity.y);
         }
         else
+        // flying
         {
             if (audioSource.isPlaying)
             {
                 audioSource.Pause();
             }
-            float midAirControl = 5f;
             rgby.velocity += new Vector2(mouvementSpeed * midAirControl * Time.deltaTime, 0);
             // clamp velocity
             rgby.velocity = new Vector2(Mathf.Clamp(rgby.velocity.x, -speed, speed), rgby.velocity.y);            
