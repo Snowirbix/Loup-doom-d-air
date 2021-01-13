@@ -11,6 +11,7 @@ public class Dialog : MonoBehaviour
     public float typeSpeed = 0.2f;
     public GameObject continueButton;
     public GameObject canvas;
+    private IEnumerator coroutine;
 
     public static Dialog instance;
     void Awake()
@@ -29,11 +30,17 @@ public class Dialog : MonoBehaviour
 
     public void NextSentence()
     {
+        if(coroutine != null)
+        {
+            StopCoroutine(coroutine);
+        }
+        
         continueButton.SetActive(false);
         if (index <= listSentences.Count - 1)
         {           
             textDisplay.text = "";
-            StartCoroutine(Type());
+            coroutine = Type();
+            StartCoroutine(coroutine);
             index++;
         }
         else
@@ -45,10 +52,7 @@ public class Dialog : MonoBehaviour
     {
         if(listSentences.Count > 0)
         {
-            if (textDisplay.text == listSentences[index - 1])
-            {
-                continueButton.SetActive(true);
-            }
+            continueButton.SetActive(true);
         }
 
         if(textDisplay.text == "")
